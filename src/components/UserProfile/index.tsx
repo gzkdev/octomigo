@@ -2,11 +2,15 @@ import { Link } from "react-router-dom";
 import styles from "./UserProfile.module.css";
 import { Location, ArrowLeft } from "iconsax-react";
 import { motion } from "framer-motion";
+import Loader from "../Loader";
+import Error from "../Error";
 import { useState } from "react";
 
 interface UserProfileInterface {
   user: any;
   data: any;
+  profileError: any;
+  repoError: any;
 }
 
 const container = {
@@ -24,8 +28,16 @@ const item = {
   show: { y: "0px", opacity: 1 },
 };
 
-function UserProfile({ data, user }: UserProfileInterface) {
+function UserProfile({
+  data,
+  user,
+  profileError,
+  repoError,
+}: UserProfileInterface) {
   const [showMenu, setShowMenu] = useState(false);
+
+  if (!user || !data) return <Loader />;
+  if (repoError || profileError) return <Error />;
 
   return (
     <div className={styles.app}>
@@ -103,7 +115,7 @@ function UserProfile({ data, user }: UserProfileInterface) {
                 <div className={styles.text}>Following</div>
               </motion.div>
               <motion.div variants={item} className={styles.stat}>
-                <div className={styles.number}>{user.followers}</div>
+                <div className={styles.number}>{user?.followers}</div>
                 <div className={styles.text}>Followers</div>
               </motion.div>
               <motion.div variants={item} className={styles.stat}>
