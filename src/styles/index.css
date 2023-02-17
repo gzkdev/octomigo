@@ -86,7 +86,7 @@ button,
 input,
 textarea {
   font-family: inherit;
-  font-size: inherit;
+  font-size: 14px;
   border: none;
   outline: none;
   background: none;
