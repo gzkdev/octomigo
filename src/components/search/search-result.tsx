@@ -45,13 +45,15 @@ export default function SearchResult({ data }: SearchResultProps) {
           className="-m-2 flex items-center gap-2 rounded p-2 hover:bg-zinc-200 data-[selected=true]:bg-zinc-200"
         >
           <div className="size-12 overflow-hidden rounded-full bg-zinc-100">
-            <Image
-              src={data?.data?.avatarUrl!}
-              alt={data?.data?.name!}
-              width={48}
-              height={48}
-              className="size-full object-cover"
-            />
+            {data?.data?.avatarUrl && (
+              <Image
+                src={data?.data?.avatarUrl}
+                alt="Profile picture"
+                width={48}
+                height={48}
+                className="size-full object-cover"
+              />
+            )}
           </div>
           <div className="text-sm">
             <p className="font-medium">{data?.data?.name}</p>

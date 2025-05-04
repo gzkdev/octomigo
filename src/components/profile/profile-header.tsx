@@ -12,9 +12,15 @@ export default function ProfileHeader({
   return (
     <div className="flex items-center gap-2">
       <div className="flex size-12 items-center justify-center overflow-hidden rounded-full bg-zinc-200">
-        {avatarUrl ? (
-          <Image src={avatarUrl} alt="Profile picture" width={48} height={48} />
-        ) : null}
+        {avatarUrl && (
+          <Image
+            src={avatarUrl}
+            alt="Profile picture"
+            width={48}
+            height={48}
+            className="size-full object-cover"
+          />
+        )}
       </div>
 
       <div>
