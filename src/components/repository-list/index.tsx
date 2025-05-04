@@ -7,20 +7,18 @@ export default function RepositoryList({ username }: { username?: string }) {
     useRepositoriesOrder();
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h2 className="text-sm font-semibold">Repositories</h2>
-        <RepositoryListFilters
-          repositoriesOrder={repositoriesOrder}
-          handleFieldChange={handleFieldChange}
-          handleDirectionChange={handleDirectionChange}
-        />
+    <div className="space-y-4">
+      <h2 className="font-medium">Repositories</h2>
+      <RepositoryListFilters
+        repositoriesOrder={repositoriesOrder}
+        handleFieldChange={handleFieldChange}
+        handleDirectionChange={handleDirectionChange}
+      />
 
-        <RepositoryListContainer
-          repositoriesOrder={repositoriesOrder}
-          username={username}
-        />
-      </div>
+      <RepositoryListContainer
+        repositoriesOrder={repositoriesOrder}
+        username={username}
+      />
     </div>
   );
 }

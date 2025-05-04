@@ -18,9 +18,9 @@ export default function CustomSelect<
   return (
     <Select value={value} onValueChange={onChange}>
       <SelectTrigger>
-        <SelectValue placeholder="Select a fruit" />
+        <SelectValue placeholder="Select an option" />
       </SelectTrigger>
-      <SelectContent className="bg-white">
+      <SelectContent>
         {options.map((option) => (
           <SelectItem key={option.value} value={option.value}>
             {option.label}

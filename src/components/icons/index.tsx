@@ -1,6 +1,6 @@
 export function Search(props: React.ComponentProps<"svg">) {
   return (
-    <svg width="20" height="20" viewBox="0 0 256 256" {...props}>
+    <svg width="32" height="32" viewBox="0 0 256 256" {...props}>
       <path d="M232.49,215.51,185,168a92.12,92.12,0,1,0-17,17l47.53,47.54a12,12,0,0,0,17-17ZM44,112a68,68,0,1,1,68,68A68.07,68.07,0,0,1,44,112Z"></path>
     </svg>
   );
@@ -8,7 +8,7 @@ export function Search(props: React.ComponentProps<"svg">) {
 
 export function Warning(props: React.ComponentProps<"svg">) {
   return (
-    <svg width="20" height="20" viewBox="0 0 256 256" {...props}>
+    <svg width="32" height="32" viewBox="0 0 256 256" {...props}>
       <path d="M240.26,186.1,152.81,34.23h0a28.74,28.74,0,0,0-49.62,0L15.74,186.1a27.45,27.45,0,0,0,0,27.71A28.31,28.31,0,0,0,40.55,228h174.9a28.31,28.31,0,0,0,24.79-14.19A27.45,27.45,0,0,0,240.26,186.1Zm-20.8,15.7a4.46,4.46,0,0,1-4,2.2H40.55a4.46,4.46,0,0,1-4-2.2,3.56,3.56,0,0,1,0-3.73L124,46.2a4.77,4.77,0,0,1,8,0l87.44,151.87A3.56,3.56,0,0,1,219.46,201.8ZM116,136V104a12,12,0,0,1,24,0v32a12,12,0,0,1-24,0Zm28,40a16,16,0,1,1-16-16A16,16,0,0,1,144,176Z"></path>
     </svg>
   );
@@ -22,13 +22,6 @@ export function Spinner(props: React.ComponentProps<"svg">) {
   );
 }
 
-export function ArrowLeft(props: React.ComponentProps<"svg">) {
-  return (
-    <svg width="32" height="32" viewBox="0 0 256 256" {...props}>
-      <path d="M228,128a12,12,0,0,1-12,12H69l51.52,51.51a12,12,0,0,1-17,17l-72-72a12,12,0,0,1,0-17l72-72a12,12,0,0,1,17,17L69,116H216A12,12,0,0,1,228,128Z"></path>
-    </svg>
-  );
-}
 export function UserList(props: React.ComponentProps<"svg">) {
   return (
     <svg width="32" height="32" viewBox="0 0 256 256" {...props}>
@@ -81,6 +74,30 @@ export function CaretUp(props: React.ComponentProps<"svg">) {
   return (
     <svg width="32" height="32" viewBox="0 0 256 256" {...props}>
       <path d="M216.49,168.49a12,12,0,0,1-17,0L128,97,56.49,168.49a12,12,0,0,1-17-17l80-80a12,12,0,0,1,17,0l80,80A12,12,0,0,1,216.49,168.49Z"></path>
+    </svg>
+  );
+}
+
+export function CaretLeft(props: React.ComponentProps<"svg">) {
+  return (
+    <svg width="32" height="32" viewBox="0 0 256 256" {...props}>
+      <path d="M168.49,199.51a12,12,0,0,1-17,17l-80-80a12,12,0,0,1,0-17l80-80a12,12,0,0,1,17,17L97,128Z"></path>
+    </svg>
+  );
+}
+
+export function Star(props: React.ComponentProps<"svg">) {
+  return (
+    <svg width="32" height="32" viewBox="0 0 256 256" {...props}>
+      <path d="M243,96a20.33,20.33,0,0,0-17.74-14l-56.59-4.57L146.83,24.62a20.36,20.36,0,0,0-37.66,0L87.35,77.44,30.76,82A20.45,20.45,0,0,0,19.1,117.88l43.18,37.24-13.2,55.7A20.37,20.37,0,0,0,79.57,233L128,203.19,176.43,233a20.39,20.39,0,0,0,30.49-22.15l-13.2-55.7,43.18-37.24A20.43,20.43,0,0,0,243,96ZM172.53,141.7a12,12,0,0,0-3.84,11.86L181.58,208l-47.29-29.08a12,12,0,0,0-12.58,0L74.42,208l12.89-54.4a12,12,0,0,0-3.84-11.86L41.2,105.24l55.4-4.47a12,12,0,0,0,10.13-7.38L128,41.89l21.27,51.5a12,12,0,0,0,10.13,7.38l55.4,4.47Z"></path>
+    </svg>
+  );
+}
+
+export function GitBranch(props: React.ComponentProps<"svg">) {
+  return (
+    <svg width="32" height="32" viewBox="0 0 256 256" {...props}>
+      <path d="M236,64a36,36,0,1,0-48,33.94V112a4,4,0,0,1-4,4H96a27.8,27.8,0,0,0-4,.29V97.94a36,36,0,1,0-24,0v60.12a36,36,0,1,0,24,0V144a4,4,0,0,1,4-4h88a28,28,0,0,0,28-28V97.94A36.07,36.07,0,0,0,236,64ZM80,52A12,12,0,1,1,68,64,12,12,0,0,1,80,52Zm0,152a12,12,0,1,1,12-12A12,12,0,0,1,80,204ZM200,76a12,12,0,1,1,12-12A12,12,0,0,1,200,76Z"></path>
     </svg>
   );
 }

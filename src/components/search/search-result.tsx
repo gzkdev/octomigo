@@ -14,7 +14,7 @@ export default function SearchResult({ data }: SearchResultProps) {
 
   if (data.error) {
     return (
-      <Command.Empty className="flex items-center justify-center p-4 text-xs !text-red-500 sm:text-sm">
+      <Command.Empty className="flex items-center justify-center border-t border-t-zinc-300 p-4 text-xs !text-red-500 sm:text-sm">
         Couldn&apos;t find user with username: {data?.variables?.username}
       </Command.Empty>
     );
@@ -22,7 +22,7 @@ export default function SearchResult({ data }: SearchResultProps) {
 
   if (data.loading) {
     return (
-      <Command.Loading className="flex items-center justify-center p-4">
+      <Command.Loading className="flex items-center justify-center border-t border-t-zinc-300 p-4">
         <Spinner
           aria-hidden="true"
           className="size-6 animate-spin fill-zinc-400"
@@ -36,15 +36,13 @@ export default function SearchResult({ data }: SearchResultProps) {
 
   return (
     <Command.List>
-      <Command.Group className="p-4 text-sm">
+      <Command.Group className="border-t border-t-zinc-300 p-4 text-sm">
         <Command.Item
           value={data?.variables?.username}
-          onSelect={() => {
-            router.push(`/${data?.data?.username}`);
-          }}
-          className="-m-2 flex items-center gap-2 rounded p-2 hover:bg-zinc-200 data-[selected=true]:bg-zinc-200"
+          onSelect={() => router.push(`/${data?.data?.username}`)}
+          className="-m-2 flex items-center gap-2 px-2 py-1 hover:bg-zinc-200 data-[selected=true]:bg-zinc-200"
         >
-          <div className="size-12 overflow-hidden rounded-full bg-zinc-100">
+          <div className="size-10 overflow-hidden rounded-full bg-zinc-100">
             {data?.data?.avatarUrl && (
               <Image
                 src={data?.data?.avatarUrl}

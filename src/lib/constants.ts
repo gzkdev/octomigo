@@ -19,6 +19,6 @@ export const REPOSITORIES_ORDER_FIELD_OPTIONS: RepositoriesOrderFieldOption[] =
 
 export const REPOSITORIES_ORDER_DIRECTION_OPTIONS: RepositoriesOrderDirectionOption[] =
   [
-    { value: OrderDirection.ASC, label: "Asc" },
-    { value: OrderDirection.DESC, label: "Desc" },
+    { value: OrderDirection.ASC, label: "Ascending" },
+    { value: OrderDirection.DESC, label: "Descending" },
   ];

@@ -15,14 +15,18 @@ export default function SearchBox() {
 
   return (
     <div className="mx-auto flex w-full max-w-md items-center justify-center">
-      <Command className="w-full overflow-hidden rounded-lg border border-zinc-200 shadow-2xl">
-        <div className="relative flex w-full items-center border-b border-transparent border-b-zinc-300">
-          <Search className="pointer-events-none absolute right-4 fill-zinc-400" />
+      <Command className="w-full overflow-hidden border border-zinc-200 shadow-2xl">
+        <div className="relative flex items-center">
+          <Search
+            aria-hidden="true"
+            className="pointer-events-none absolute left-2 size-5 fill-zinc-400"
+          />
+
           <Command.Input
             value={userName}
             onValueChange={(value) => setUserName(value)}
             placeholder="Enter Github username..."
-            className="w-full px-4 py-2 text-base outline-none hover:outline-none focus-visible:outline-none"
+            className="w-full py-2 pr-4 pl-9 text-base outline-none hover:outline-none focus-visible:outline-none"
           />
         </div>
 

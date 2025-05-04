@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useProfile } from "@/hooks/useProfile";
 import { usePathname } from "next/navigation";
 
-import { ArrowLeft, Spinner } from "@/components/icons";
+import { CaretLeft, Spinner } from "@/components/icons";
 import ProfileBio from "@/components/profile/profile-bio";
 import ProfileStats from "@/components/profile/profile-stats";
 import RepositoryList from "@/components/repository-list";
@@ -16,27 +16,27 @@ export default function ProfileLayout() {
   const { data, loading, error } = useProfile(username);
 
   return (
-    <div className="min-h-full w-full max-w-xl">
-      <div className="space-y-6">
-        <div className="flex items-center">
+    <div className="min-h-full w-full max-w-xl text-sm">
+      <div className="space-y-10">
+        <div className="mb-6 flex items-center">
           <Link
             href="/"
-            className="inline-flex items-center gap-1 fill-current text-sm font-semibold text-zinc-500"
+            className="inline-flex items-center gap-1 fill-current font-semibold text-zinc-500"
           >
-            <ArrowLeft aria-hidden="true" className="size-4" />
+            <CaretLeft aria-hidden="true" className="size-4" />
             <span>Back</span>
           </Link>
         </div>
 
         {loading && (
-          <div className="flex h-12 items-center justify-center">
+          <div className="flex items-center justify-center">
             <Spinner className="size-6 animate-spin fill-zinc-500" />
           </div>
         )}
 
         {error && (
-          <div className="flex h-12 items-center justify-center">
-            <p className="text-sm text-red-500">
+          <div className="flex items-center justify-center">
+            <p className="text-red-500">
               Error loading profile. Please try again.
             </p>
           </div>

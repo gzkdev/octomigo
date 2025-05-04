@@ -48,6 +48,10 @@ export interface RepositoriesResponse {
     repositories: {
       nodes: Repository[];
       totalCount: number;
+      pageInfo: {
+        hasNextPage: boolean;
+        endCursor: string | null;
+      };
     };
   };
 }

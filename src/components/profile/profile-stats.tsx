@@ -10,18 +10,30 @@ export default function ProfileStats({
   repositoriesCount?: number;
 }) {
   return (
-    <div className="space-y-2 rounded-lg bg-zinc-100 p-3 text-sm font-medium">
-      <div className="flex items-center gap-2">
-        <Users aria-hidden="true" className="size-5 fill-green-500" />
-        <span>{followersCount} • Followers</span>
-      </div>
-      <div className="flex items-center gap-2">
-        <UserPlus aria-hidden="true" className="size-5 fill-purple-500" />
-        <span>{followingCount} • Following</span>
-      </div>
-      <div className="flex items-center gap-2">
-        <Folder aria-hidden="true" className="size-5 fill-blue-500" />
-        <span>{repositoriesCount} • Repositories</span>
+    <div className="space-y-4">
+      <div className="font-medium">Profile Stats</div>
+      <div className="space-y-2 bg-zinc-100 px-4 py-2">
+        <div className="flex items-center gap-2">
+          <Users aria-hidden="true" className="size-5 fill-blue-500" />
+          <span>
+            <span className="font-medium">{followersCount}</span>{" "}
+            <span className="text-zinc-500">Followers</span>
+          </span>
+        </div>
+        <div className="flex items-center gap-2">
+          <UserPlus aria-hidden="true" className="size-5 fill-blue-500" />
+          <span>
+            <span className="font-medium">{followingCount}</span>{" "}
+            <span className="text-zinc-500">Following</span>
+          </span>
+        </div>
+        <div className="flex items-center gap-2">
+          <Folder aria-hidden="true" className="size-5 fill-blue-500" />
+          <span>
+            <span className="font-medium">{repositoriesCount}</span>{" "}
+            <span className="text-zinc-500">Repositories</span>
+          </span>
+        </div>
       </div>
     </div>
   );
