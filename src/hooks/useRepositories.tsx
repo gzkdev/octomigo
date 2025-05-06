@@ -20,7 +20,6 @@ export default function useRepositories(
         after: null,
       },
       skip: !username,
-      returnPartialData: true,
       notifyOnNetworkStatusChange: true,
     });
 

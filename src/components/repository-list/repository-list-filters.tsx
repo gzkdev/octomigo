@@ -27,7 +27,7 @@ export default function RepositoryListFilters({
 
   return (
     <div className="flex items-center justify-between gap-2">
-      <div className="text-xs">Filters:</div>
+      <div className="text-xs">Sort:</div>
       <CustomSelect
         options={REPOSITORIES_ORDER_FIELD_OPTIONS}
         value={repositoriesOrder.field}

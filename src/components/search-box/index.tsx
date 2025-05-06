@@ -1,21 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import { useProfile } from "@/hooks/useProfile";
 import { useDebounce } from "@/hooks/useDebounce";
 
 import { Command } from "cmdk";
 import { Search } from "../icons";
-import SearchResult from "./search-result";
+import SearchBoxResult from "./search-box-result";
 
 export default function SearchBox() {
   const [userName, setUserName] = useState("");
   const debouncedUserName = useDebounce(userName, 500);
-  const searchResult = useProfile(debouncedUserName);
 
   return (
     <div className="mx-auto flex w-full max-w-md items-center justify-center">
-      <Command className="w-full overflow-hidden border border-zinc-200 shadow-2xl">
+      <Command className="w-full overflow-hidden rounded-lg border border-zinc-200 shadow-2xl">
         <div className="relative flex items-center">
           <Search
             aria-hidden="true"
@@ -30,7 +28,7 @@ export default function SearchBox() {
           />
         </div>
 
-        <SearchResult data={searchResult} />
+        <SearchBoxResult userName={debouncedUserName} />
       </Command>
     </div>
   );

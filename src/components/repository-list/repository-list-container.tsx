@@ -1,89 +1,60 @@
-import { Spinner, Star, GitBranch } from "../icons";
-import { RepositoriesOrderState } from "@/hooks/reducers";
+import { useId } from "react";
 import useRepositories from "@/hooks/useRepositories";
+import { RepositoriesOrderState } from "@/hooks/reducers";
 
-type RepositoryListContainerProps = {
-  username?: string;
-  repositoriesOrder: RepositoriesOrderState;
-};
+import { Spinner } from "../icons";
+import RepositoryListItem from "./repository-list-item";
 
 export default function RepositoryListContainer({
   username,
   repositoriesOrder,
-}: RepositoryListContainerProps) {
-  const { data, loading, error, loadMore, hasMore, isPending } =
+}: {
+  username?: string;
+  repositoriesOrder: RepositoriesOrderState;
+}) {
+  const id = useId();
+  const { data, error, loadMore, hasMore, isPending, loading } =
     useRepositories(repositoriesOrder, username);
-  const noPublicRepositories = data?.user?.repositories?.nodes.length === 0;
+
+  const noPublicRepositories = data?.user?.repositories?.nodes?.length === 0;
   const showLoadMoreButton = hasMore && data;
 
   if (isPending) {
-    return (
-      <div className="flex h-16 items-center justify-center">
-        <Spinner className="size-6 animate-spin fill-zinc-500" />
-      </div>
-    );
+    return <RepositoryListLoading />;
   }
 
   if (error) {
-    return (
-      <div className="flex min-h-28 items-center justify-center">
-        <span className="text-red-500">
-          Error: {error.message}
-          <br />
-          Please try again.
-        </span>
-      </div>
-    );
+    return <RepositoryListError />;
   }
 
   if (!data) return null;
 
   if (noPublicRepositories) {
-    return (
-      <div className="flex min-h-28 items-center justify-center">
-        <span className="text-gray-500">
-          {username} has no public repositories
-        </span>
-      </div>
-    );
+    return <RepositoryListEmpty username={username} />;
   }
 
   return (
-    <div className="space-y-4">
-      {data?.user?.repositories?.nodes.map((repository) => (
-        <div
-          key={repository.name}
-          className="relative space-y-2 bg-zinc-100 p-4 hover:bg-zinc-200"
-        >
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href={`https://github.com/${username}/${repository.name}`}
-            className="text-xs font-semibold after:absolute after:inset-0"
-          >
-            {repository.name}
-          </a>
-          <div className="line-clamp-2">{repository.description}</div>
-          <div className="flex items-center gap-4">
-            <span className="text-xs">{repository.primaryLanguage?.name}</span>
-            <div className="flex items-center gap-1">
-              <Star aria-label="Stars" className="size-4 fill-zinc-500" />
-              <span>{repository.stargazerCount}</span>
-            </div>
-            <div className="flex items-center gap-1">
-              <GitBranch aria-label="Forks" className="size-4 fill-zinc-500" />
-              <span>{repository.forkCount}</span>
-            </div>
-          </div>
-        </div>
-      ))}
+    <>
+      <div className="grid gap-4 pt-4">
+        {data?.user?.repositories?.nodes?.map((repository, index) => (
+          <RepositoryListItem
+            key={`${id}-${index}`}
+            username={username}
+            name={repository?.name}
+            description={repository?.description}
+            primaryLanguage={repository?.primaryLanguage?.name}
+            stargazerCount={repository?.stargazerCount}
+            forkCount={repository?.forkCount}
+          />
+        ))}
+      </div>
 
       {showLoadMoreButton && (
         <div className="flex justify-center">
           <button
             onClick={loadMore}
             disabled={loading}
-            className="bg-zinc-200 px-4 py-2 text-xs font-medium hover:bg-zinc-300 focus-visible:bg-zinc-300 disabled:cursor-not-allowed disabled:opacity-50"
+            className="cursor-pointer rounded-lg border border-zinc-300 px-4 py-2 text-xs font-medium disabled:cursor-not-allowed disabled:opacity-50"
           >
             {loading ? (
               <div className="flex items-center gap-1 text-zinc-500">
@@ -96,6 +67,33 @@ export default function RepositoryListContainer({
           </button>
         </div>
       )}
+    </>
+  );
+}
+
+function RepositoryListLoading() {
+  return (
+    <div className="flex h-16 items-center justify-center">
+      <Spinner className="size-6 animate-spin fill-zinc-500" />
+    </div>
+  );
+}
+
+function RepositoryListError() {
+  return (
+    <div className="flex min-h-28 items-center justify-center">
+      <span className="text-red-500">Error loading repositories</span>
+    </div>
+  );
+}
+
+function RepositoryListEmpty({ username }: { username?: string }) {
+  return (
+    <div className="flex min-h-28 items-center justify-center">
+      <p>
+        {username}
+        <span className="text-zinc-500"> has no public repositories</span>
+      </p>
     </div>
   );
 }

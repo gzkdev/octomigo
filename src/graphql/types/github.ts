@@ -59,3 +59,26 @@ export interface RepositoriesResponse {
 export interface GetUserResponse {
   user: User | null;
 }
+
+export type ContributionDay = {
+  contributionCount: number;
+  date: string;
+  color: string;
+};
+
+export type ContributionWeek = {
+  contributionDays: ContributionDay[];
+};
+
+export interface ContributionCalendar {
+  totalContributions: number;
+  weeks: ContributionWeek[];
+}
+
+export interface ContributionsResponse {
+  user: {
+    contributionsCollection: {
+      contributionCalendar: ContributionCalendar;
+    };
+  } | null;
+}

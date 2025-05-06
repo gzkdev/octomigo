@@ -1,4 +1,4 @@
-import { useQuery } from "@apollo/client";
+import { useSuspenseQuery } from "@apollo/client";
 import { GET_USER } from "@/graphql/queries/user";
 import { GetUserResponse, TransformedUser } from "@/graphql/types/github";
 
@@ -21,13 +21,10 @@ function transformUserData(
 }
 
 export function useProfile(username: string) {
-  const result = useQuery<GetUserResponse>(GET_USER, {
+  const result = useSuspenseQuery<GetUserResponse>(GET_USER, {
     variables: { username },
     skip: !username,
   });
 
-  return {
-    ...result,
-    data: transformUserData(result.data),
-  };
+  return { data: transformUserData(result.data) };
 }
